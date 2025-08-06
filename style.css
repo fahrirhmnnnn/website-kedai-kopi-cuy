@@ -667,10 +667,4 @@ footer .credit a {
   .contact p {
     font-size: 1.4rem;
   }
-  .modal-container {
-    width: 85%; /* Mengurangi lebar menjadi 90% dari viewport */
-    max-width: 200px; /* Batasi lebar maksimal agar tidak terlalu besar */
-    margin: 10% auto; /* Sesuaikan margin atas/bawah dan tetap di tengah */
-    padding: 1rem; /* Sesuaikan padding internal agar tidak terlalu sempit */
-  }
 }
