@@ -114,6 +114,21 @@ body {
 }
 
 /* Shopping Cart */
+#shopping-cart-button {
+  position: relative;
+}
+
+#shopping-cart-button .quantity-badge {
+  display: inline-block;
+  padding: 1px 5px;
+  background-color: red;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 0;
+  right: -10px;
+}
+
 .shopping-cart {
   position: absolute;
   top: 100%;
@@ -141,27 +156,88 @@ body {
 }
 
 .shopping-cart img {
-  height: 6rem;
+  height: 4rem;
   border-radius: 50%;
 }
 
-.shoping-cart h3 {
-  font-size: 1.6rem;
-  padding-bottom: 0.5rem;
+.shopping-cart h3 {
+  font-size: 1.4rem;
 }
 
 .shopping-cart .item-price {
   font-size: 1.2rem;
 }
 
-.shopping-cart .remove-item {
-  position: absolute;
-  right: 1rem;
+.shopping-cart .cart-item #add,
+.shopping-cart .cart-item #remove {
+  display: inline-block;
+  padding: 2px 5px;
+  cursor: pointer;
+  margin: 0 8px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.shopping-cart h4 {
+  font-size: 1.6rem;
+  margin-top: -1rem;
+  text-align: center;
+}
+
+/* Checkout Form */
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-top: 1px dashed black;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.form-container h5 {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.form-container form {
+  width: 100%;
+  text-align: center;
+}
+
+.form-container label {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.form-container span {
+  text-align: right;
+}
+
+.form-container input {
+  background-color: #ddd;
+  padding: 5px;
+  font-size: 1rem;
+  width: 70%;
+}
+
+.form-container .checkout-button {
+  padding: 6px 14px;
+  background-color: royalblue;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 20px;
+  margin: 1rem auto;
   cursor: pointer;
 }
 
-.shopping-cart .remove-item:hover {
-  color: var(--primary);
+.form-container .checkout-button.disabled {
+  background-color: #999;
+  cursor: not-allowed;
 }
 
 /* Hero Section */
@@ -183,10 +259,7 @@ body {
   width: 100%;
   height: 30%;
   bottom: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(1, 1, 3, 1) 8% rgba(255, 255, 255, 0) 50%
-  );
+  background: linear-gradient(0deg, rgba(1, 1, 3, 1) 8% rgba(255, 255, 255, 0) 50%);
 }
 
 .hero .content {
@@ -381,11 +454,6 @@ body {
   font-weight: bold;
 }
 
-.products .product-price span {
-  text-decoration: line-through;
-  font-weight: lighter;
-  font-size: 1rem;
-}
 /* Contact Section */
 .contact .row {
   display: flex;
@@ -482,16 +550,26 @@ footer .credit a {
 
 /* Modal Box */
 /* Item Detail */
+
 .modal {
-  display: none;
   position: fixed;
-  z-index: 9999;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Pastikan z-index ini tinggi */
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.modal.active {
+  visibility: visible;
+  opacity: 1;
 }
 
 .modal-container {
@@ -503,6 +581,40 @@ footer .credit a {
   border: 1px solid #666;
   width: 80%;
   animation: animateModal 0.5s;
+}
+
+.modal-content {
+  display: flex; /* Menggunakan flexbox untuk tata letak */
+  flex-wrap: wrap; /* Memungkinkan item untuk pindah ke baris baru */
+  justify-content: center; /* Memusatkan item secara horizontal */
+  align-items: center; /* Memusatkan item secara vertikal */
+  padding: 2rem;
+  gap: 1.5rem; /* Memberi jarak antar elemen */
+}
+
+.modal-content img {
+  border-radius: 50%;
+  width: 200px; /* Atur ukuran gambar */
+  height: 200px;
+  object-fit: cover;
+}
+
+.modal-content .product-content {
+  text-align: center; /* Pusatkan teks */
+}
+
+.modal-content h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary); /* Warna teks utama */
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 400px;
+  color: #000000; /* Mengubah warna paragraf menjadi putih keabu-abuan */
 }
 
 /* Modal Animation */
